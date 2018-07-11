@@ -97,6 +97,13 @@ body {
   grid-gap: 0.5rem;
 }
 
+.calendar__header{
+  grid-column: 1 / 8;
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
 .calendar__container--weekday {
   grid-column: 1 / 6;
 
