@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CalendarItem from "./CalendarItem/CalendarItem";
+import WordsList from "./WordsList/WordsList";
 import "./App.css";
 
 class App extends Component {
@@ -7,19 +8,13 @@ class App extends Component {
     super(props);
     this.state = {
       items: [{ word: "Scrum" }, { word: "Sprint" }, { word: "Product owner" }],
-      showList: false,
-      buttonText: "Expand List"
+      showList: false
     };
   }
 
   showListHandler = () => {
     const isVisible = this.state.showList;
     this.setState({ showList: !isVisible });
-    if (this.state.buttonText.toLowerCase() === "collapse list") {
-      this.setState({ buttonText: "Expand List" });
-    } else {
-      this.setState({ buttonText: "Collapse List" });
-    }
   };
 
   addItemHandler = () => {
@@ -27,8 +22,9 @@ class App extends Component {
   }
 
   render() {
+    //when wordsList is set to null the list is not visible
     let wordsList = null;
-
+    //wordsList will be assigned the list items here if list is expanded
     if (this.state.showList === true) {
       wordsList = this.state.items.map(el => {
         return <CalendarItem word={el.word} />;
@@ -37,9 +33,9 @@ class App extends Component {
 
     return (
       <div>
-        <button onClick={this.showListHandler}>{this.state.buttonText}</button>
-        {wordsList}
-        <button>Generate calendar</button>
+        <button onClick={this.showListHandler}>Toggle list</button>
+        
+        <WordsList list={wordsList} />
       </div>
     );
   }
