@@ -22,6 +22,10 @@ class App extends Component {
     }
   };
 
+  addItemHandler = () => {
+
+  }
+
   render() {
     let wordsList = null;
 
@@ -33,8 +37,8 @@ class App extends Component {
 
     return (
       <div>
-        {wordsList}
         <button onClick={this.showListHandler}>{this.state.buttonText}</button>
+        {wordsList}
         <button>Generate calendar</button>
       </div>
     );
